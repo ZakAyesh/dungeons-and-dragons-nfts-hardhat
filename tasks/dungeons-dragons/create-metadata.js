@@ -70,6 +70,8 @@ const metadataTemple = {
         filename = 'metadata/' + characterMetadata['name'].toLowerCase().replace(/\s/g, '-')
         let data = JSON.stringify(characterMetadata)
         fs.writeFileSync(filename + '.mjs', data)
+        console.log("Run the following to set the URIs for your NFTs:")
+        console.log("npx hardhat set-uri --contract " + contractAddr + " --tokenid InsertIdHere" + " --uri insertURIHere" + " --network " + network.name)
     }
 })
 
