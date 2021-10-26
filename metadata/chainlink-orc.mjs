@@ -2,8 +2,8 @@ import fs from 'fs';
 import { File } from 'nft.storage'
 
 const orc = {
-  name: "Tim",
-  description: "Tim is amazing",
+  name: "Chainlink Orc",
+  description: "This green tweeting machine is one of the most exciting and excited creatures on the planet. Don't let his looks fool you, he loves to love new technology and help others get involved. Loves watching 'JSON Parser'",
   image: new File([ await fs.promises.readFile('/Users/zak/Documents/NFTDemo-HH/images/Chainlink_Orc.png')], 'Chainlink_Orc.png',
   { type: 'image/png'
 }),

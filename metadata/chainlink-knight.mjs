@@ -2,8 +2,8 @@ import fs from 'fs';
 import { File } from 'nft.storage'
 
 const knight = {
-  name: "Jim",
-  description: "Jim is jamming",
+  name: "Chainlink Knight",
+  description: "Defender against Flash Loan attacks, protector of #Defi protocols. Helping keep the smart contract kingdom secure, reliable, and safe.",
   image: new File([ await fs.promises.readFile('/Users/zak/Documents/NFTDemo-HH/images/Chainlink_Knight.png')], 'Chainlink_Knight.png',
   { type: 'image/png'
 }),

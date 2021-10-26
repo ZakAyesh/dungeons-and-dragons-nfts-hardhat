@@ -2,8 +2,8 @@ import fs from 'fs';
 import { File } from 'nft.storage'
 
 const wizard = {
-  name: "Maria",
-  description: "Maria is magical",
+  name: "Chainlink Wizard",
+  description: "Brilliant spell-slinger and magical with cryptography. Often uses Jewles in her h-index potions.",
   image: new File([ await fs.promises.readFile('/Users/zak/Documents/NFTDemo-HH/images/Chainlink_Wizard.png')], 'Chainlink_Wizard.png',
   { type: 'image/png'
 }),
