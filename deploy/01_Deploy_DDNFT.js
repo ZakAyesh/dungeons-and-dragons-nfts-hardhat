@@ -40,8 +40,8 @@ module.exports = async ({
   log("npx hardhat fund-link --contract " + dungeonsDragons.address + " --network " + networkConfig[chainId]['name'] + additionalMessage)
   log("To generate a character run the following:")
   log("npx hardhat generate-character --contract " + dungeonsDragons.address + " --name InsertNameHere " +  " --network " + networkConfig[chainId]['name'])
-  log("To get a character's details run the following:")
-  log("npx hardhat get-character --contract " + dungeonsDragons.address + " --network " + networkConfig[chainId]['name'])
+  log("To get a character's details as metadata run the following:")
+  log("npx hardhat create-metadata --contract " + dungeonsDragons.address + " --network " + networkConfig[chainId]['name'])
   log("----------------------------------------------------")
 }
 
