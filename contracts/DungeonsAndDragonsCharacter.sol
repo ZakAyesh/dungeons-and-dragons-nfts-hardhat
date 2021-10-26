@@ -1,27 +1,25 @@
 // contracts/DungeonsAndDragonsCharacter.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.6;
+pragma solidity ^0.8.7;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 
 
-contract DungeonsAndDragonsCharacter is ERC721, VRFConsumerBase, Ownable {
-    using SafeMath for uint256;
-    using Strings for string;
+contract DungeonsAndDragonsCharacter is ERC721URIStorage, VRFConsumerBase, Ownable {
+    // using Strings for string;
 
     AggregatorV3Interface internal priceFeed;
     bytes32 internal keyHash;
     uint256 internal fee;
     uint256 public randomResult;
     address public VRFCoordinator;
-    // rinkeby: 0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B
     address public LinkToken;
-    // rinkeby: 0x01BE23585060835E02B77ef475b0Cc51aA1e0709a
+
 
     struct Character {
         int256 strength;
@@ -94,11 +92,11 @@ contract DungeonsAndDragonsCharacter is ERC721, VRFConsumerBase, Ownable {
     {
         uint256 newId = characters.length;
         int256 strength = (getLatestPrice() / 10000000000);
-        uint256 dexterity = ((randomNumber % 10000) / 100 );
-        uint256 constitution = ((randomNumber % 1000000) / 10000 );
-        uint256 intelligence = ((randomNumber % 100000000) / 1000000 );
-        uint256 wisdom = ((randomNumber % 10000000000) / 100000000 );
-        uint256 charisma = ((randomNumber % 1000000000000) / 10000000000);
+        uint256 dexterity = randomNumber % 100;
+        uint256 constitution = uint256(keccak256(abi.encode(randomNumber, 1))) % 100;
+        uint256 intelligence = uint256(keccak256(abi.encode(randomNumber, 2))) % 100;
+        uint256 wisdom = uint256(keccak256(abi.encode(randomNumber, 3))) % 100;
+        uint256 charisma = uint256(keccak256(abi.encode(randomNumber, 4))) % 100;
         uint256 experience = 0;
         Character memory character = Character(
                 strength,
